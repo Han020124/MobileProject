@@ -48,10 +48,11 @@
             android:id="@+id/iv_bus_schedule"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginTop="16dp"
+            android:layout_weight="1"
             android:background="#F0F0F0"
-            android:scaleType="centerInside" />
+            android:scaleType="fitXY"
+            android:src="@drawable/bustime" />
     </LinearLayout>
 
 </LinearLayout>
