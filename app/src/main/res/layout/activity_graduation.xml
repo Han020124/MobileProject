@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="졸업이수학점 입력"
-            android:textSize="22sp"
+            android:textSize="30sp"
             android:textColor="#333333"
             android:textStyle="bold" />
 
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="15dp"
-        android:background="#F0F0F0"
+        android:background="@drawable/spinner_background"
         android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="15dp"
-        android:background="#F0F0F0"
+        android:background="@drawable/spinner_background"
         android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 
@@ -56,20 +56,21 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginBottom="40dp"
-        android:background="#F0F0F0"
+        android:background="@drawable/spinner_background"
         android:paddingStart="16dp"
         android:paddingEnd="16dp" />
 
     <Button
-        android:id="@+id/btn_confirm"
+        android:id="@+id/button_confirm"
         android:layout_width="230dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:text="확인"
         android:textSize="20sp"
         android:textColor="#FFFFFF"
-        android:background="#01579B"
+        android:background="@drawable/button_background"
         android:layout_marginTop="20dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp" />
+
 </LinearLayout>
