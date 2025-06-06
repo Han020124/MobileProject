@@ -5,6 +5,27 @@
     android:orientation="vertical"
     android:background="#FEF7FF" >
 
+    <!-- 헤더 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/header_logo"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true" />
+
+    </LinearLayout>
+
+    <!-- 일정표 이미지 -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,6 +35,7 @@
         android:background="#FFFFFF"
         android:layout_margin="16dp" />
 
+    <!-- 메뉴 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +43,7 @@
         android:background="#FEF7FF"
         android:padding="16dp">
 
+        <!-- 메뉴 제목 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,12 +55,14 @@
 
             android:layout_marginBottom="16dp" />
 
+        <!-- 첫 번째 줄 메뉴 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="24dp">
 
+            <!-- 전자 출결 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -46,7 +71,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_attendance"
+                    android:id="@+id/button_attendance"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_attendance"
@@ -63,6 +88,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 시간표 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +97,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_schedule"
+                    android:id="@+id/button_schedule"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_schedule"
@@ -89,6 +115,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 강의 평가 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -97,7 +124,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_evaluation"
+                    android:id="@+id/button_evaluation"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_evaluation"
@@ -115,6 +142,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 셔틀 버스 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -123,7 +151,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_bus"
+                    android:id="@+id/button_bus"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_bus"
@@ -142,11 +170,13 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- 두 번째 줄 메뉴 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <!-- 졸업이수학점 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -155,7 +185,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_graduation"
+                    android:id="@+id/button_graduation"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_graduation"
@@ -173,6 +203,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 면담 신청 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -181,7 +212,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_counseling"
+                    android:id="@+id/button_counseling"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_counseling"
@@ -199,6 +230,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 결석계 제출 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -207,12 +239,13 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_absence"
+                    android:id="@+id/button_absence"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_absence"
                     android:background="@drawable/button_circle_background"
                     android:scaleType="centerInside"
+                    android:padding="9dp"
                     android:contentDescription="결석계 제출" />
 
                 <TextView
@@ -224,6 +257,7 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
+            <!-- 제휴기업 목록 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -232,12 +266,13 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/btn_partnership"
+                    android:id="@+id/button_partnership"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/ic_partnership"
                     android:background="@drawable/button_circle_background"
                     android:scaleType="centerInside"
+                    android:padding="11dp"
                     android:contentDescription="제휴기업 목록" />
 
                 <TextView

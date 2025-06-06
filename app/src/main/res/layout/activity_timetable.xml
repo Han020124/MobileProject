@@ -7,72 +7,97 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
+        <!-- 헤더 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="30dp">
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            android:elevation="2dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="48dp"
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="    시간표"
-                android:textColor="#333333"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:src="@drawable/header_logo"
+                android:scaleType="fitStart"
+                android:adjustViewBounds="true" />
 
             <ImageButton
-                android:id="@+id/btn_arrow"
+                android:id="@+id/btn_arrow_header"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="#FEF7FF"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_arrow"
                 android:scaleType="center" />
         </LinearLayout>
 
-
-
-        <ImageView
-            android:id="@+id/image_timetable"
+        <!-- 메인 -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="24dp"
-            android:background="#F0F0F0"
-            android:scaleType="centerInside" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- 버튼 영역 -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
-            android:paddingHorizontal="24dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
 
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/button_circle_background"
-                android:gravity="center"
-                android:padding="0dp"
-                android:text="+"
-                android:textColor="@android:color/white"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="    시간표"
+                    android:textColor="#333333"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
-        </RelativeLayout>
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/image_timetable"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.8"
+                android:layout_marginTop="8dp"
+                android:background="#F0F0F0"
+                android:scaleType="centerInside" />
+
+            <!-- 버튼 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:paddingHorizontal="24dp">
+
+                <Button
+                    android:id="@+id/btn_add"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/button_circle_background"
+                    android:gravity="center"
+                    android:padding="0dp"
+                    android:text="+"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
-
 
 
 </RelativeLayout>

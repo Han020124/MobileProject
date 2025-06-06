@@ -5,7 +5,7 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:background="#FEF7FF">
 
-<!-- 두 번째 이미지 스타일의 헤더 -->
+<!-- 헤더 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@ android:background="#FEF7FF">
             android:scaleType="center" />
     </LinearLayout>
 
-<!-- 메인 콘텐츠 영역 -->
+<!-- 메인 -->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -74,7 +74,7 @@ android:background="#FEF7FF">
 
     </LinearLayout>
 
-    <!-- 날짜 입력 -->
+    <!-- 날짜 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@ android:background="#FEF7FF">
 
     </LinearLayout>
 
-    <!-- 시간 선택 -->
+    <!-- 시간 -->
     <TextView
         android:id="@+id/tv_time_label"
         android:layout_width="wrap_content"
@@ -131,7 +131,7 @@ android:background="#FEF7FF">
                 android:textColor="#333333"
                 android:layout_marginBottom="12dp" />
 
-            <!-- 오전 시간 버튼들 -->
+            <!-- 오전 시간 버튼 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,7 +218,7 @@ android:background="#FEF7FF">
 
             </LinearLayout>
 
-            <!-- 오후 섹션 -->
+            <!-- 오후 -->
             <TextView
                 android:id="@+id/tv_afternoon"
                 android:layout_width="wrap_content"
@@ -229,7 +229,7 @@ android:background="#FEF7FF">
                 android:textColor="#333333"
                 android:layout_marginBottom="12dp" />
 
-            <!-- 오후 시간 버튼들 -->
+            <!-- 오후 시간 버튼 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -387,7 +387,7 @@ android:background="#FEF7FF">
 
     </ScrollView>
 
-    <!-- 신청 버튼 -->
+    <!-- 신청 -->
     <Button
         android:id="@+id/button_apply"
         android:layout_width="wrap_content"
