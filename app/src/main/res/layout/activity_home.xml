@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FEF7FF" >
+
+    <!-- 헤더 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@drawable/header_logo"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true" />
+
+    </LinearLayout>
+
+    <!-- 일정표 이미지 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/schedule_image"
+        android:scaleType="fitXY"
+        android:background="#FFFFFF"
+        android:layout_margin="16dp" />
+
+    <!-- 메뉴 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FEF7FF"
+        android:padding="16dp">
+
+        <!-- 메뉴 제목 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메뉴"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:background="#FEF7FF"
+
+            android:layout_marginBottom="16dp" />
+
+        <!-- 첫 번째 줄 메뉴 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <!-- 전자 출결 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_attendance"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_attendance"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:contentDescription="전자 출결" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전자 출결"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 시간표 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_schedule"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_schedule"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="15dp"
+                    android:contentDescription="시간표" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시간표"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 강의 평가 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_evaluation"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_evaluation"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="15dp"
+                    android:contentDescription="강의 평가" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="강의 평가"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 셔틀 버스 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_bus"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_bus"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="11dp"
+                    android:contentDescription="셔틀 버스" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="셔틀 버스"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 두 번째 줄 메뉴 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- 졸업이수학점 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_graduation"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_graduation"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="11dp"
+                    android:contentDescription="졸업이수학점" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="졸업이수학점"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 면담 신청 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_counseling"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_counseling"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="11dp"
+                    android:contentDescription="면담 신청" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="면담 신청"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 결석계 제출 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_absence"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_absence"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="9dp"
+                    android:contentDescription="결석계 제출" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="결석계 제출"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 제휴기업 목록 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/button_partnership"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_partnership"
+                    android:background="@drawable/button_circle_background"
+                    android:scaleType="centerInside"
+                    android:padding="11dp"
+                    android:contentDescription="제휴기업 목록" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제휴기업 목록"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
