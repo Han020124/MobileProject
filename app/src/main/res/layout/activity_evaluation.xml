@@ -16,6 +16,7 @@
         android:orientation="horizontal"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp"
+        android:background="@color/white"
         >
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -48,6 +49,8 @@
         android:orientation="vertical"
         android:paddingVertical="10dp"
         android:paddingHorizontal="20dp"
+        android:background="@color/background_color"
+
         >
         <!--            class Selection -->
         <androidx.appcompat.widget.LinearLayoutCompat
