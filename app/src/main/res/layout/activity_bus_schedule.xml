@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BusScheduleActivity"
+    android:orientation="vertical"
+>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:src="@drawable/header_logo"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="→"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textColor="#01579B"
+            android:backgroundTint="@color/white"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        >
+        <TableRow>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_column="0"
+                android:text="명학역 -> 성결대학교"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_column="1"
+                android:text="성결대학교 -> 명학역"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:text="00:00 ~ 00:00"
+                android:textColor="@color/black"
+                android:textSize="17.5dp"
+                android:textAlignment="center"
+
+                />
+        </TableRow>
+
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </TableRow>
+        <TableRow>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+
+                >
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="00:00 ~ 00:00"
+                    android:textColor="@color/black"
+                    android:textSize="12.5dp"
+                    android:textAlignment="center"
+                    />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </TableRow>
+
+    </TableLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MobileProject</string>
+
+    <string-array name="class_array">
+        <item>수업1</item>
+        <item>수업2</item>
+        <item>수업3</item>
+        <item>수업4</item>
+        <item>수업5</item>
+        <item>수업6</item>
+
+    </string-array>
 </resources>
