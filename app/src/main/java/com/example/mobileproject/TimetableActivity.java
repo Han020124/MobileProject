@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.mobileproject;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

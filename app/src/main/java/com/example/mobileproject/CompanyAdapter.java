@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.mobileproject;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,10 +12,10 @@ import java.util.List;
 public class CompanyAdapter extends BaseAdapter {
 
     private Context context;
-    private List<PartnercompanyActivity.Company> companyList;
+    private List<com.example.mobileproject.PartnercompanyActivity.Company> companyList;
     private LayoutInflater inflater;
 
-    public CompanyAdapter(Context context, List<PartnercompanyActivity.Company> companyList) {
+    public CompanyAdapter(Context context, List<com.example.mobileproject.PartnercompanyActivity.Company> companyList) {
         this.context = context;
         this.companyList = companyList;
         this.inflater = LayoutInflater.from(context);
@@ -50,7 +50,7 @@ public class CompanyAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        PartnercompanyActivity.Company company = companyList.get(position);
+        com.example.mobileproject.PartnercompanyActivity.Company company = companyList.get(position);
 
         holder.ivCompanyLogo.setImageResource(company.getLogoResId());
 

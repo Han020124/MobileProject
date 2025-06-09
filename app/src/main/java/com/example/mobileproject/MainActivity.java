@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.mobileproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                Intent intent = new Intent(MainActivity.this, com.example.mobileproject.SignupActivity.class);
                 startActivity(intent);
             }
         });

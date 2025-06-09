@@ -1,4 +1,4 @@
-package com.example.teamproject;
+package com.example.mobileproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,10 +57,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        buttonGraduation.setOnClickListener(v -> {
+        /*buttonGraduation.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, GraduationActivity.class);
             startActivity(intent);
-        });
+        });*/
 
         buttonCounseling.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ConsultationActivity.class);
