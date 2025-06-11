@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:background="#FEF7FF">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FEF7FF">
 
-<!-- 헤더 -->
+    <!-- 헤더 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,374 +32,374 @@ android:background="#FEF7FF">
             android:scaleType="center" />
     </LinearLayout>
 
-<!-- 메인 -->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="면담 신청"
-        android:textSize="24sp"
-        android:textColor="#333333"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
-
-    <!-- 교수님 선택 -->
+    <!-- 메인 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/tv_professor_label"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="교수님 선택"
-            android:textSize="16sp"
+            android:text="면담 신청"
+            android:textSize="24sp"
             android:textColor="#333333"
-            android:layout_marginEnd="16dp" />
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp" />
 
-        <Spinner
-            android:id="@+id/spinner_professor"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@drawable/spinner_background" />
-
-    </LinearLayout>
-
-    <!-- 날짜 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:id="@+id/tv_date_label"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="날짜 입력"
-            android:textSize="16sp"
-            android:textColor="#333333"
-            android:layout_marginEnd="16dp" />
-
-        <Spinner
-            android:id="@+id/spinner_date"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@drawable/spinner_background" />
-
-    </LinearLayout>
-
-    <!-- 시간 -->
-    <TextView
-        android:id="@+id/tv_time_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="시간 선택"
-        android:textSize="16sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="16dp" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
+        <!-- 교수님 선택 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical">
 
-            <!-- 오전 섹션 -->
             <TextView
-                android:id="@+id/tv_morning"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_professor_label"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="오전"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:text="교수님 선택"
+                android:textSize="16sp"
                 android:textColor="#333333"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginEnd="16dp" />
 
-            <!-- 오전 시간 버튼 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <Button
-                    android:id="@+id/btn_0900"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="09:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_0930"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="09:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1000"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="10:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1030"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="10:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="24dp">
-
-                <Button
-                    android:id="@+id/btn_1100"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="11:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1130"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="11:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="2" />
-
-            </LinearLayout>
-
-            <!-- 오후 -->
-            <TextView
-                android:id="@+id/tv_afternoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="오후"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:layout_marginBottom="12dp" />
-
-            <!-- 오후 시간 버튼 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <Button
-                    android:id="@+id/btn_1300"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="13:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1330"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="13:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1400"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="14:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1430"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="14:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <Button
-                    android:id="@+id/btn_1500"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="15:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1530"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="15:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1530_2"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="15:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1600"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="16:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="8dp">
-
-                <Button
-                    android:id="@+id/btn_1630"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="16:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1700"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="17:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1730"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
-                    android:text="17:30"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-                <Button
-                    android:id="@+id/btn_1800"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="18:00"
-                    android:textSize="14sp"
-                    android:background="@drawable/button_time_background"
-                    android:textColor="#000000" />
-
-            </LinearLayout>
+            <Spinner
+                android:id="@+id/spinner_professor"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background" />
 
         </LinearLayout>
 
-    </ScrollView>
+        <!-- 날짜 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical">
 
-    <!-- 신청 -->
-    <Button
-        android:id="@+id/button_apply"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
-        android:layout_gravity="right"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_background"
-        android:text="신청"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_date_label"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="날짜 입력"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginEnd="16dp" />
 
-</LinearLayout>
+            <Spinner
+                android:id="@+id/spinner_date"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_background" />
+
+        </LinearLayout>
+
+        <!-- 시간 -->
+        <TextView
+            android:id="@+id/tv_time_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간 선택"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="16dp" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 오전 섹션 -->
+                <TextView
+                    android:id="@+id/tv_morning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오전"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 오전 시간 버튼 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_0900"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="09:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_0930"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="09:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1000"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="10:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1030"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="10:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="24dp">
+
+                    <Button
+                        android:id="@+id/btn_1100"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="11:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1130"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="11:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="2" />
+
+                </LinearLayout>
+
+                <!-- 오후 -->
+                <TextView
+                    android:id="@+id/tv_afternoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오후"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- 오후 시간 버튼 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_1300"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="13:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1330"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="13:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1400"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="14:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1430"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="14:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_1500"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="15:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1530"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="15:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1530_2"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="15:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1600"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="16:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <Button
+                        android:id="@+id/btn_1630"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="16:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1700"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="17:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1730"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:text="17:30"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:id="@+id/btn_1800"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="18:00"
+                        android:textSize="14sp"
+                        android:background="@drawable/button_time_background"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- 신청 -->
+        <Button
+            android:id="@+id/button_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_background"
+            android:text="신청"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </LinearLayout>

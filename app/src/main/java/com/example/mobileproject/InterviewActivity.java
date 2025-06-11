@@ -26,7 +26,7 @@ public class InterviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultation);
+        setContentView(R.layout.activity_main);
 
         spinnerProfessor = findViewById(R.id.spinner_professor);
         spinnerDate = findViewById(R.id.spinner_date);
@@ -100,7 +100,7 @@ public class InterviewActivity extends AppCompatActivity {
         }
 
         // 교수 이름에 따른 이메일 매핑
-        String professorEmail = professor.equals("교수님 A") ? "professorA@example.com" :
+        String professorEmail = professor.equals("교수님 A") ? "han3003ty@gmail.com" :
                 professor.equals("교수님 B") ? "professorB@example.com" :
                         "professorC@example.com";
 

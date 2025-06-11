@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         buttonCounseling.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ConsultationActivity.class);
+            Intent intent = new Intent(HomeActivity.this, InterviewActivity.class);
             startActivity(intent);
         });
 
