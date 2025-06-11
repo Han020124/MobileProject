@@ -10,4 +10,62 @@
         <item>수업6</item>
 
     </string-array>
+
+    <string-array name="subject_list">
+        <item>영어커뮤니케이션(1)</item>
+        <item>영어커뮤니케이션(2)</item>
+        <item>기독교로의초대</item>
+        <item>신앙으로의초대</item>
+        <item>대학생활과진로</item>
+        <item>사회봉사</item>
+        <item>기초글쓰기</item>
+        <item>컴퓨터공학입문</item>
+        <item>C프로그래밍</item>
+        <item>대학수학</item>
+        <item>대학물리학(1)</item>
+        <item>대학물리학(2)</item>
+        <item>이산수학</item>
+        <item>창의적공학설계</item>
+        <item>파이썬프로그래밍</item>
+        <item>C프로그래밍응용</item>
+        <item>선형대수학</item>
+        <item>데이터구조</item>
+        <item>유닉스와리눅스</item>
+        <item>윈도우프로그래밍</item>
+        <item>확률과통계</item>
+        <item>데이터베이스</item>
+        <item>컴퓨터네트워크</item>
+        <item>웹표준기술</item>
+        <item>자바프로그래밍응용</item>
+        <item>자바프로그래밍</item>
+        <item>논리회로</item>
+        <item>소프트웨어공학</item>
+        <item>컴퓨터알고리즘</item>
+        <item>인공지능</item>
+        <item>웹응용기술</item>
+        <item>모바일프로그래밍</item>
+        <item>전공종합설계(1)</item>
+        <item>전공종합설계(1)</item>
+        <item>컴퓨터구조</item>
+        <item>운영체제</item>
+        <item>머신러닝</item>
+        <item>임베디드시스템</item>
+        <item>텍스트마이닝</item>
+        <item>고급네트워킹</item>
+        <item>정보보안</item>
+    </string-array>
+
+    <string-array name="credit_list">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="class_type_list">
+        <item>교양 필수</item>
+        <item>교양 선택</item>
+        <item>전공 필수</item>
+        <item>전공 선택</item>
+    </string-array>
+
 </resources>
