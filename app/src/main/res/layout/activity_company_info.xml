@@ -1,137 +1,137 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CompanyInfoActivity"
-    android:orientation="vertical"
->
-
+    <?xml version="1.0" encoding="utf-8"?>
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        >
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:src="@drawable/header_logo"
-            />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="→"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="#01579B"
-            android:backgroundTint="@color/white"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <!--    Header End      -->
-
-    <!--    Main Content    -->
-    <androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:context=".CompanyInfoActivity"
         android:orientation="vertical"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="20dp"
-        >
+    >
 
-        <!--        Company Logo or Photo       -->
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/company_photo"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginVertical="10dp"
-            android:src="@drawable/no_image"
-            />
-
-
-        <!--        Company Information         -->
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
             android:paddingVertical="10dp"
             >
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/company_name"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="기업 이름"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:src="@drawable/header_logo"
                 />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingVertical="5dp"
-                android:paddingHorizontal="10dp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:text="주소 : "
-                    android:textSize="15dp"
-                    android:textAlignment="center"
-                    />
+                android:layout_weight="1"
+                />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/company_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="XX시 XX구 ... "
-                    android:textSize="15dp"
-                    />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp"
-                >
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:text="연락처 : "
-                    android:textSize="15dp"
-                    android:textAlignment="center"
-                    />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/company_phone_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="XXX-XXXX-XXXX"
-                    android:textSize="15dp"
-                    />
-            </androidx.appcompat.widget.LinearLayoutCompat>
-            <!--    Company Information End     -->
-
-            <!--            hyperlink           -->
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="→"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#01579B"
+                android:backgroundTint="@color/white"
+                />
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <!--    Header End      -->
+
+        <!--    Main Content    -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            >
+
+            <!--        Company Logo or Photo       -->
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/company_photo"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginVertical="10dp"
+                android:src="@drawable/no_image"
+                />
+
+
+            <!--        Company Information         -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="10dp"
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/company_name"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="기업 이름"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="주소 : "
+                        android:textSize="15dp"
+                        android:textAlignment="center"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="XX시 XX구 ... "
+                        android:textSize="15dp"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    >
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:text="연락처 : "
+                        android:textSize="15dp"
+                        android:textAlignment="center"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/company_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="XXX-XXXX-XXXX"
+                        android:textSize="15dp"
+                        />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+                <!--    Company Information End     -->
+
+                <!--            hyperlink           -->
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
