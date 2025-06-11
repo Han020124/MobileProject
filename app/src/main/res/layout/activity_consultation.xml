@@ -29,7 +29,9 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow"
-            android:scaleType="center" />
+            android:scaleType="center"
+            android:contentDescription="뒤로가기 버튼" />
+
     </LinearLayout>
 
     <!-- 메인 -->

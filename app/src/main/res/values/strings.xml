@@ -68,4 +68,7 @@
         <item>전공 선택</item>
     </string-array>
 
+    <string name="arrow_button_description">뒤로 가기</string>
+
+
 </resources>

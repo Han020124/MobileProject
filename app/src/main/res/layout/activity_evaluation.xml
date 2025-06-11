@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".EvaluationActivity"
     android:orientation="vertical"
->
+    >
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -22,19 +22,18 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:src="@drawable/header_logo"
-            />
+            android:contentDescription="@null" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="→"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#01579B"
             android:backgroundTint="@color/white"
@@ -49,7 +48,7 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="20dp"
         >
-        <!--            class Selection -->
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="과목 선택"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textAlignment="center"
                 />
 
@@ -86,12 +85,11 @@
                 android:id="@+id/question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Q1.어쩌구 저쩌구"
+                android:text="Q1.어쩌구저쩌구"
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 />
-
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/radio_group"
@@ -151,6 +149,7 @@
             android:orientation="horizontal"
             android:gravity="end"
             >
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/prev_button"
                 android:layout_width="wrap_content"

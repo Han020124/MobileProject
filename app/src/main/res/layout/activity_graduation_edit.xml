@@ -30,7 +30,9 @@
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow"
-            android:scaleType="center" />
+            android:scaleType="center"
+            android:contentDescription="@string/arrow_button_description" />
+
     </LinearLayout>
 
     <!-- 본문 -->
