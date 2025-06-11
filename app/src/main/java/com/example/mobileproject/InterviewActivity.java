@@ -26,7 +26,7 @@ public class InterviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_consultation);
 
         spinnerProfessor = findViewById(R.id.spinner_professor);
         spinnerDate = findViewById(R.id.spinner_date);
@@ -99,14 +99,20 @@ public class InterviewActivity extends AppCompatActivity {
             return;
         }
 
-        // 교수 이름에 따른 이메일 매핑
-        String professorEmail = professor.equals("교수님 A") ? "han3003ty@gmail.com" :
-                professor.equals("교수님 B") ? "professorB@example.com" :
-                        "professorC@example.com";
+        String professorEmail;
+        if (professor.equals("교수님 A")) {
+            professorEmail = "han3003ty@gmail.com";
+        } else if (professor.equals("교수님 B")) {
+            professorEmail = "professorB@example.com";
+        } else if (professor.equals("교수님 C")) {
+            professorEmail = "professorC@example.com";
+        } else {
+            professorEmail = "unknown@example.com";
+        }
 
         new Thread(() -> {
             try {
-                URL url = new URL("http://10.0.2.2:8080/consultation/apply");  // 에뮬레이터 기준 localhost 주소
+                URL url = new URL("http://10.0.2.2:8080/consultation/apply");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Content-Type", "application/json; utf-8");
