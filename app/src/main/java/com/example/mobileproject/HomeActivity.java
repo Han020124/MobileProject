@@ -57,10 +57,10 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        /*buttonGraduation.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, GraduationActivity.class);
+        buttonGraduation.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, graduation_main.class);
             startActivity(intent);
-        });*/
+        });
 
         buttonCounseling.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ConsultationActivity.class);
