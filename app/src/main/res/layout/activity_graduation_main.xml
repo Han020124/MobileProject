@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
             android:textColor="@color/white"
+            android:layout_marginTop="12dp"
             android:text="과목 편집"/>
 
     </LinearLayout>

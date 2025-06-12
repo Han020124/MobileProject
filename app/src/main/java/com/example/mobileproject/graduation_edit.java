@@ -2,6 +2,7 @@ package com.example.mobileproject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -64,7 +65,11 @@ public class graduation_edit extends AppCompatActivity {
             }
         });
 
-        btnArrow.setOnClickListener(v -> finish());
+        btnArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(graduation_edit.this, graduation_main.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void loadSubjectData() {

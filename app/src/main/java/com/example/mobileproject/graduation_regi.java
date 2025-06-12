@@ -1,9 +1,11 @@
 package com.example.mobileproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -13,7 +15,8 @@ public class graduation_regi extends AppCompatActivity {
 
     Spinner spinnerSubject, spinnerCredit, spinnerClass;
     Button buttonConfirm;
-    DBHelper dbHelper;  // SQLite DB 헬퍼 클래스
+    ImageButton btnArrow; // 화살표 버튼 추가
+    DBHelper dbHelper;    // SQLite DB 헬퍼 클래스
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class graduation_regi extends AppCompatActivity {
         spinnerCredit = findViewById(R.id.spinner_crd);
         spinnerClass = findViewById(R.id.spinner_cls);
         buttonConfirm = findViewById(R.id.button_confirm);
+        btnArrow = findViewById(R.id.btn_arrow); // 버튼 연결
 
         dbHelper = new DBHelper(this);
 
@@ -58,6 +62,13 @@ public class graduation_regi extends AppCompatActivity {
                     Toast.makeText(graduation_regi.this, "저장 실패", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+
+        // 화살표 버튼 클릭 시 graduation_main으로 이동
+        btnArrow.setOnClickListener(v -> {
+            Intent intent = new Intent(graduation_regi.this, graduation_main.class);
+            startActivity(intent);
+            finish();
         });
     }
 }

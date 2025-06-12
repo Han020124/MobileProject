@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,33 +22,47 @@ public class graduation_main extends AppCompatActivity {
 
     BarChart barChart;
     Button btnInput, btnEdit;
+    ImageButton btnArrow; // 추가: 상단 화살표 버튼
     DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graduation_main); // XML 파일 이름에 맞게 수정
+        setContentView(R.layout.activity_graduation_main); // 레이아웃 파일명 확인
 
         barChart = findViewById(R.id.barChart);
         btnInput = findViewById(R.id.btnInput);
         btnEdit = findViewById(R.id.btnEdit);
+        btnArrow = findViewById(R.id.btn_arrow); // 버튼 바인딩
         dbHelper = new DBHelper(this);
 
         showChart();
 
+        // 과목 입력 화면으로 이동
         btnInput.setOnClickListener(v -> {
             Intent intent = new Intent(graduation_main.this, graduation_regi.class);
             startActivity(intent);
         });
 
+        // 과목 편집 화면으로 이동
         btnEdit.setOnClickListener(v -> {
             Intent intent = new Intent(graduation_main.this, graduation_edit.class);
             startActivity(intent);
         });
+
+        // 화살표 버튼 클릭 시 홈으로 이동
+        btnArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(graduation_main.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void showChart() {
-        HashMap<String, Integer> categoryMap = dbHelper.getCategoryCreditSum(); // 데이터베이스에서 이수구분별 총합 학점
+        HashMap<String, Integer> categoryMap = dbHelper.getCategoryCreditSum(); // 이수 구분별 학점 데이터
 
         ArrayList<BarEntry> entries = new ArrayList<>();
         ArrayList<String> labels = new ArrayList<>();
@@ -78,4 +93,3 @@ public class graduation_main extends AppCompatActivity {
         barChart.invalidate(); // 차트 갱신
     }
 }
-
