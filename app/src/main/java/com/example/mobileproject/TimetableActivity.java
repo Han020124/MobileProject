@@ -1,238 +1,244 @@
 package com.example.mobileproject;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TimetableActivity extends AppCompatActivity {
 
-    private ImageButton btnArrowHeader;
+    private Spinner spinnerSubjects;
+    private Button btnAdd, btnDel;
     private ImageView imageTimetable;
 
-    private List<TimetableItem> timetableItems;
+    private TDBHelper dbHelper;
+    private List<TimetableItem> currentSubjects;
+
+    // 미리 정의된 10과목 + 색깔 + 시간 정보
+    private static class SubjectInfo {
+        String name;
+        String day;
+        int start;
+        int duration;
+        String color;
+
+        SubjectInfo(String name, String day, int start, int duration, String color) {
+            this.name = name;
+            this.day = day;
+            this.start = start;
+            this.duration = duration;
+            this.color = color;
+        }
+    }
+
+    private static final SubjectInfo[] ALL_SUBJECTS = new SubjectInfo[]{
+            new SubjectInfo("소프트웨어 공학(1-3)월", "월", 1, 3, "#E17055"),
+            new SubjectInfo("소프트웨어 공학(4-6)월", "월", 4, 3, "#E17055"),
+            new SubjectInfo("웹응용기술(4-6)화", "화", 4, 3, "#6C5CE7"),
+            new SubjectInfo("웹응용기술(7-9)화", "화", 7, 3, "#6C5CE7"),
+            new SubjectInfo("모바일프로그래밍(4-6)화", "화", 4, 3, "#A29BFE"),
+            new SubjectInfo("모바일프로그래밍(7-9)화", "화", 7, 3, "#A29BFE"),
+            new SubjectInfo("인공지능(4-6)목", "목", 4, 3, "#FD79A8"),
+            new SubjectInfo("인공지능(7-9)목", "목", 7, 3, "#FD79A8"),
+            new SubjectInfo("컴퓨터알고리즘(4-6)목", "목", 4, 3, "#FDCB6E"),
+            new SubjectInfo("컴퓨터알고리즘(7-9)목", "목", 7, 3, "#FDCB6E")
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
 
-        initializeViews();
-        initializeTimetableData();
-        setupClickListeners();
-        generateTimetableImage();
-    }
+        dbHelper = new TDBHelper(this);
 
-    private void initializeViews() {
-        btnArrowHeader = findViewById(R.id.btn_arrow_header);
+        spinnerSubjects = findViewById(R.id.spinner_subjects);
+        btnAdd = findViewById(R.id.btn_add);
+        btnDel = findViewById(R.id.btn_del);
         imageTimetable = findViewById(R.id.image_timetable);
-    }
 
-    private void initializeTimetableData() {
-        timetableItems = new ArrayList<>();
-
-        timetableItems.add(new TimetableItem("자바프로그래밍", "월", 9, 2, "#FF6B6B"));
-        timetableItems.add(new TimetableItem("소프트웨어공학", "화", 10, 2, "#4ECDC4"));
-        timetableItems.add(new TimetableItem("컴퓨터알고리즘", "수", 13, 2, "#45B7D1"));
-        timetableItems.add(new TimetableItem("인공지능", "목", 14, 2, "#96CEB4"));
-        timetableItems.add(new TimetableItem("모바일프로그래밍", "금", 11, 2, "#FFEAA7"));
-    }
-
-    private void setupClickListeners() {
-        btnArrowHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TimetableActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
-    private void addNewSubject() {
-        String[] sampleSubjects = {"데이터베이스", "네트워크", "운영체제", "웹프로그래밍", "게임개발"};
-        String[] days = {"월", "화", "수", "목", "금"};
-        String[] colors = {"#E17055", "#6C5CE7", "#A29BFE", "#FD79A8", "#FDCB6E"};
-
-        if (timetableItems.size() < 10) { // 최대 10개 과목까지만
-            int index = (int) (Math.random() * sampleSubjects.length);
-            String subject = sampleSubjects[index];
-            String day = days[(int) (Math.random() * days.length)];
-            int startTime = 9 + (int) (Math.random() * 8); // 9시~16시 사이
-            String color = colors[index % colors.length];
-
-            TimetableItem newItem = new TimetableItem(subject, day, startTime, 1, color);
-            timetableItems.add(newItem);
-
-            generateTimetableImage();
-
-            Toast.makeText(this, subject + " 과목이 추가되었습니다.", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "더 이상 과목을 추가할 수 없습니다.", Toast.LENGTH_SHORT).show();
+        // Spinner 어댑터 세팅 (과목명만 보여주기)
+        List<String> subjectNames = new ArrayList<>();
+        for (SubjectInfo s : ALL_SUBJECTS) {
+            subjectNames.add(s.name);
         }
-    }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, subjectNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerSubjects.setAdapter(adapter);
 
-    private void generateTimetableImage() {
-        imageTimetable.post(new Runnable() {
-            @Override
-            public void run() {
-                int width = imageTimetable.getWidth();
-                int height = imageTimetable.getHeight();
+        loadSubjectsFromDB();
+        generateTimetableImage();
 
-                if (width < 100) width = 1000;
-                if (height < 100) height = 800;
+        btnAdd.setOnClickListener(v -> {
+            int pos = spinnerSubjects.getSelectedItemPosition();
+            SubjectInfo selected = ALL_SUBJECTS[pos];
 
-                Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                Canvas canvas = new Canvas(bitmap);
-
-                canvas.drawColor(Color.WHITE);
-
-                Paint paint = new Paint();
-                paint.setAntiAlias(true);
-
-                drawTimetableGrid(canvas, paint, width, height);
-
-                drawTimetableItems(canvas, paint, width, height);
-
-                imageTimetable.setImageBitmap(bitmap);
-            }
-        });
-    }
-
-    private void drawTimetableGrid(Canvas canvas, Paint paint, int width, int height) {
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(3);
-
-        int dayWidth = width / 6;
-        for (int i = 0; i <= 6; i++) {
-            canvas.drawLine(i * dayWidth, 0, i * dayWidth, height, paint);
-        }
-
-        int timeHeight = height / 11;
-        for (int i = 0; i <= 10; i++) {
-            canvas.drawLine(0, i * timeHeight, width, i * timeHeight, paint);
-        }
-
-        paint.setColor(Color.parseColor("#E8E8E8"));
-        canvas.drawRect(0, 0, width, timeHeight, paint);
-        canvas.drawRect(0, 0, dayWidth, height, paint);
-
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(Math.min(width, height) / 25);
-        paint.setTextAlign(Paint.Align.CENTER);
-        paint.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
-
-        String[] days = {"시간", "월", "화", "수", "목", "금"};
-        for (int i = 0; i < days.length; i++) {
-            canvas.drawText(days[i], i * dayWidth + dayWidth/2, timeHeight/2 + paint.getTextSize()/3, paint);
-        }
-
-        paint.setTextSize(Math.min(width, height) / 30);
-        for (int i = 0; i < 10; i++) {
-            String time = (9 + i) + ":00";
-            canvas.drawText(time, dayWidth/2, (i + 1) * timeHeight + timeHeight/2 + paint.getTextSize()/3, paint);
-        }
-    }
-
-    private void drawTimetableItems(Canvas canvas, Paint paint, int width, int height) {
-        int dayWidth = width / 6;
-        int timeHeight = height / 11;
-
-        for (TimetableItem item : timetableItems) {
-            int dayIndex = getDayIndex(item.getDay());
-            if (dayIndex > 0) {
-                int left = dayIndex * dayWidth + 8;
-                int top = (item.getStartTime() - 8) * timeHeight + 8;
-                int right = left + dayWidth - 16;
-                int bottom = top + (item.getDuration() * timeHeight) - 16;
-
-                paint.setColor(Color.parseColor(item.getColor()));
-                paint.setStyle(Paint.Style.FILL);
-                canvas.drawRect(left, top, right, bottom, paint);
-
-                paint.setColor(Color.WHITE);
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setStrokeWidth(3);
-                canvas.drawRect(left, top, right, bottom, paint);
-
-                paint.setColor(Color.WHITE);
-                paint.setStyle(Paint.Style.FILL);
-                paint.setTextSize(Math.min(dayWidth, timeHeight) / 4);
-                paint.setTextAlign(Paint.Align.CENTER);
-                paint.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
-
-                String text = item.getSubjectName();
-
-                if (text.length() > 6) {
-                    String[] words = text.split("(?<=\\G.{" + (text.length()/2) + "})");
-                    if (words.length >= 2) {
-                        int textX = left + (right - left) / 2;
-                        int textY1 = top + (bottom - top) / 2 - (int)(paint.getTextSize() / 2);
-                        int textY2 = top + (bottom - top) / 2 + (int)(paint.getTextSize() / 2);
-
-                        canvas.drawText(words[0], textX, textY1, paint);
-                        canvas.drawText(words[1], textX, textY2, paint);
-                    } else {
-                        int textX = left + (right - left) / 2;
-                        int textY = top + (bottom - top) / 2 + (int)(paint.getTextSize() / 3);
-                        canvas.drawText(text, textX, textY, paint);
-                    }
-                } else {
-                    int textX = left + (right - left) / 2;
-                    int textY = top + (bottom - top) / 2 + (int)(paint.getTextSize() / 3);
-                    canvas.drawText(text, textX, textY, paint);
+            // 이미 DB에 같은 과목, 요일, 시작교시가 있으면 추가 방지
+            boolean exists = false;
+            for (TimetableItem item : currentSubjects) {
+                if (item.getSubjectName().equals(selected.name)
+                        && item.getDay().equals(selected.day)
+                        && item.getStartPeriod() == selected.start) {
+                    exists = true;
+                    break;
                 }
             }
-        }
+            if (exists) {
+                Toast.makeText(this, "이미 추가된 과목입니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            TimetableItem newItem = new TimetableItem(
+                    0, // id는 자동생성
+                    selected.name,
+                    selected.day,
+                    selected.start,
+                    selected.duration,
+                    selected.color);
+
+            long id = dbHelper.addSubject(newItem);
+            if (id != -1) {
+                loadSubjectsFromDB();
+                generateTimetableImage();
+                Toast.makeText(this, "과목 추가 완료", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "과목 추가 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnDel.setOnClickListener(v -> {
+            int pos = spinnerSubjects.getSelectedItemPosition();
+            SubjectInfo selected = ALL_SUBJECTS[pos];
+
+            TimetableItem toDelete = null;
+            for (TimetableItem item : currentSubjects) {
+                if (item.getSubjectName().equals(selected.name)
+                        && item.getDay().equals(selected.day)
+                        && item.getStartPeriod() == selected.start) {
+                    toDelete = item;
+                    break;
+                }
+            }
+
+            if (toDelete == null) {
+                Toast.makeText(this, "삭제할 과목이 없습니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int count = dbHelper.deleteSubject(toDelete.getId());
+            if (count > 0) {
+                loadSubjectsFromDB();
+                generateTimetableImage();
+                Toast.makeText(this, "과목 삭제 완료", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "과목 삭제 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    private int getDayIndex(String day) {
-        switch (day) {
-            case "월": return 1;
-            case "화": return 2;
-            case "수": return 3;
-            case "목": return 4;
-            case "금": return 5;
-            default: return 0;
-        }
+    private void loadSubjectsFromDB() {
+        currentSubjects = dbHelper.getAllSubjects();
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(TimetableActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-        super.onBackPressed();
-    }
+    // 시간표 이미지 생성 (간단한 표 형태)
+    private void generateTimetableImage() {
+        // 시간표 기본 설정
+        int width = 800;
+        int height = 1200;
+        int leftMargin = 80;
+        int topMargin = 80;
+        int cellWidth = 120;
+        int cellHeight = 140;
+        int periods = 9;  // 1~9교시
+        String[] days = {"월", "화", "수", "목", "금"};
 
-    private static class TimetableItem {
-        private String subjectName;
-        private String day;
-        private int startTime;
-        private int duration;
-        private String color;
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
 
-        public TimetableItem(String subjectName, String day, int startTime, int duration, String color) {
-            this.subjectName = subjectName;
-            this.day = day;
-            this.startTime = startTime;
-            this.duration = duration;
-            this.color = color;
+        // 배경
+        canvas.drawColor(Color.WHITE);
+
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setTextSize(40);
+        paint.setColor(Color.BLACK);
+
+        // 요일 헤더 그리기
+        for (int i = 0; i < days.length; i++) {
+            float x = leftMargin + cellWidth * i + 10;
+            float y = topMargin - 20;
+            canvas.drawText(days[i], x, y, paint);
         }
 
-        public String getSubjectName() { return subjectName; }
-        public String getDay() { return day; }
-        public int getStartTime() { return startTime; }
-        public int getDuration() { return duration; }
-        public String getColor() { return color; }
+        // 교시 헤더 그리기
+        for (int i = 1; i <= periods; i++) {
+            float x = leftMargin - 60;
+            float y = topMargin + cellHeight * (i - 1) + 80;
+            canvas.drawText(i + "교시", x, y, paint);
+        }
+
+        // 시간표 칸 테두리 그리기
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setColor(Color.GRAY);
+        for (int d = 0; d < days.length; d++) {
+            for (int p = 0; p < periods; p++) {
+                int left = leftMargin + d * cellWidth;
+                int top = topMargin + p * cellHeight;
+                int right = left + cellWidth;
+                int bottom = top + cellHeight;
+                canvas.drawRect(left, top, right, bottom, paint);
+            }
+        }
+
+        // 과목별 칸 채우기
+        paint.setStyle(Paint.Style.FILL);
+        for (TimetableItem item : currentSubjects) {
+            int dayIndex = -1;
+            for (int i = 0; i < days.length; i++) {
+                if (days[i].equals(item.getDay())) {
+                    dayIndex = i;
+                    break;
+                }
+            }
+            if (dayIndex == -1) continue;
+
+            paint.setColor(Color.parseColor(item.getColor()));
+
+            int left = leftMargin + dayIndex * cellWidth + 2;
+            int top = topMargin + (item.getStartPeriod() - 1) * cellHeight + 2;
+            int right = left + cellWidth - 4;
+            int bottom = top + cellHeight * item.getDuration() - 4;
+
+            canvas.drawRect(left, top, right, bottom, paint);
+
+            // 텍스트
+            paint.setColor(Color.WHITE);
+            paint.setTextSize(30);
+            paint.setAntiAlias(true);
+
+            float textX = left + 10;
+            float textY = top + 40;
+
+            // 과목명 개행해서 그리기 (길면 줄 바꿈)
+            String[] lines = item.getSubjectName().split("\\(");
+            String firstLine = lines[0];
+            String secondLine = (lines.length > 1) ? "(" + lines[1] : "";
+
+            canvas.drawText(firstLine, textX, textY, paint);
+            canvas.drawText(secondLine, textX, textY + 35, paint);
+        }
+
+        imageTimetable.setImageBitmap(bitmap);
     }
 }
