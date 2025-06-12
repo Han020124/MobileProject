@@ -103,7 +103,7 @@ public class InterviewActivity extends AppCompatActivity {
         if (professor.equals("교수님 A")) {
             professorEmail = "han3003ty@gmail.com";
         } else if (professor.equals("교수님 B")) {
-            professorEmail = "professorB@example.com";
+            professorEmail = "dntjd12379@gmail.com";
         } else if (professor.equals("교수님 C")) {
             professorEmail = "professorC@example.com";
         } else {
