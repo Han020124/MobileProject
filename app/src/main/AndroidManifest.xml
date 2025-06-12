@@ -63,6 +63,18 @@
             android:name=".TimetableActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".graduation_main"
+            android:exported="false" />
+
+        <activity
+            android:name=".graduation_regi"
+            android:exported="false" />
+
+        <activity
+            android:name=".graduation_edit"
+            android:exported="false" />
+
         
         <activity
             android:name=".PartnercompanyActivity"
