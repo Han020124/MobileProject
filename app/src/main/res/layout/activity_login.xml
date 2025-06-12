@@ -80,6 +80,7 @@
             android:textSize="17dp"
             android:textColor="@color/white"
             android:backgroundTint="#01579B"
+            android:id="@+id/btnLogin"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.appcompat.widget.LinearLayoutCompat>
