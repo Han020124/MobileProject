@@ -1,12 +1,16 @@
 package com.example.mobileproject;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+import java.util.Calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -66,6 +71,14 @@ public class TimetableActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timetable);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            if (!alarmManager.canScheduleExactAlarms()) {
+                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                startActivity(intent);
+            }
+        }
 
         dbHelper = new TDBHelper(this);
 
@@ -122,6 +135,7 @@ public class TimetableActivity extends AppCompatActivity {
 
             long id = dbHelper.addSubject(newItem);
             if (id != -1) {
+                scheduleSubjectNotification(selected);
                 loadSubjectsFromDB();
                 generateTimetableImage();
                 Toast.makeText(this, "과목 추가 완료", Toast.LENGTH_SHORT).show();
@@ -177,6 +191,56 @@ public class TimetableActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void scheduleSubjectNotification(SubjectInfo subject) {
+        Calendar calendar = Calendar.getInstance();
+
+        int dayOfWeek;
+        switch (subject.day) {
+            case "월":
+                dayOfWeek = Calendar.MONDAY;
+                break;
+            case "화":
+                dayOfWeek = Calendar.TUESDAY;
+                break;
+            case "수":
+                dayOfWeek = Calendar.WEDNESDAY;
+                break;
+            case "목":
+                dayOfWeek = Calendar.THURSDAY;
+                break;
+            case "금":
+                dayOfWeek = Calendar.FRIDAY;
+                break;
+            default:
+                dayOfWeek = -1;
+                break;
+        }
+
+        if (dayOfWeek == -1) return;
+
+        calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+        calendar.set(Calendar.HOUR_OF_DAY, 9 + subject.start - 1); // 예: 1교시 = 9시
+        calendar.set(Calendar.MINUTE, 55); // 5분 전
+        calendar.set(Calendar.SECOND, 0);
+
+        if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
+            calendar.add(Calendar.WEEK_OF_YEAR, 1); // 이미 지난 경우 다음 주 예약
+        }
+
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        intent.putExtra("subject", subject.name);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this,
+                subject.name.hashCode(),
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+    }
+
 
     private void loadSubjectsFromDB() {
         currentSubjects = dbHelper.getAllSubjects();
