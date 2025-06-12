@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,6 +30,8 @@ public class TimetableActivity extends AppCompatActivity {
 
     private TDBHelper dbHelper;
     private List<TimetableItem> currentSubjects;
+
+    private TimetableItem selectedItem = null;  // 클릭해서 선택된 과목 저장
 
     private static class SubjectInfo {
         String name;
@@ -71,13 +75,10 @@ public class TimetableActivity extends AppCompatActivity {
         imageTimetable = findViewById(R.id.image_timetable);
         Btnarrow = findViewById(R.id.btn_arrow);
 
-        Btnarrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TimetableActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        Btnarrow.setOnClickListener(v -> {
+            Intent intent = new Intent(TimetableActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         // 스피너에 과목명 세팅
@@ -96,6 +97,7 @@ public class TimetableActivity extends AppCompatActivity {
             int pos = spinnerSubjects.getSelectedItemPosition();
             SubjectInfo selected = ALL_SUBJECTS[pos];
 
+            // 이미 추가된 과목인지 검사
             boolean exists = false;
             for (TimetableItem item : currentSubjects) {
                 if (item.getSubjectName().equals(selected.name)
@@ -128,30 +130,48 @@ public class TimetableActivity extends AppCompatActivity {
             }
         });
 
-        btnDel.setOnClickListener(v -> {
-            int pos = spinnerSubjects.getSelectedItemPosition();
-            SubjectInfo selected = ALL_SUBJECTS[pos];
+        // 시간표 이미지에서 과목 선택 처리
+        imageTimetable.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                float x = event.getX();
+                float y = event.getY();
 
-            TimetableItem toDelete = null;
-            for (TimetableItem item : currentSubjects) {
-                if (item.getSubjectName().equals(selected.name)
-                        && item.getDay().equals(selected.day)
-                        && item.getStartPeriod() == selected.start) {
-                    toDelete = item;
-                    break;
+                Bitmap bitmap = ((BitmapDrawable)imageTimetable.getDrawable()).getBitmap();
+
+                float scaleX = (float) bitmap.getWidth() / imageTimetable.getWidth();
+                float scaleY = (float) bitmap.getHeight() / imageTimetable.getHeight();
+
+                float bitmapX = x * scaleX;
+                float bitmapY = y * scaleY;
+
+                TimetableItem clicked = findItemByCoordinates(bitmapX, bitmapY);
+                if (clicked != null) {
+                    selectedItem = clicked;
+                    Toast.makeText(this, selectedItem.getSubjectName() + " 선택됨", Toast.LENGTH_SHORT).show();
+                    generateTimetableImage();  // 선택 강조 갱신
+                } else {
+                    selectedItem = null;
+                    Toast.makeText(this, "과목 영역을 클릭하세요", Toast.LENGTH_SHORT).show();
+                    generateTimetableImage();
                 }
+                return true;
             }
+            return false;
+        });
 
-            if (toDelete == null) {
-                Toast.makeText(this, "삭제할 과목이 없습니다.", Toast.LENGTH_SHORT).show();
+
+        // 삭제 버튼 클릭 시 선택된 과목 삭제
+        btnDel.setOnClickListener(v -> {
+            if (selectedItem == null) {
+                Toast.makeText(this, "삭제할 과목을 먼저 선택하세요.", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            int count = dbHelper.deleteSubject(toDelete.getId());
+            int count = dbHelper.deleteSubject(selectedItem.getId());
             if (count > 0) {
+                Toast.makeText(this, "과목 삭제 완료", Toast.LENGTH_SHORT).show();
+                selectedItem = null;
                 loadSubjectsFromDB();
                 generateTimetableImage();
-                Toast.makeText(this, "과목 삭제 완료", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "과목 삭제 실패", Toast.LENGTH_SHORT).show();
             }
@@ -160,6 +180,35 @@ public class TimetableActivity extends AppCompatActivity {
 
     private void loadSubjectsFromDB() {
         currentSubjects = dbHelper.getAllSubjects();
+    }
+
+    // 클릭 좌표로 과목 찾기
+    private TimetableItem findItemByCoordinates(float x, float y) {
+        int leftMargin = 80;
+        int topMargin = 80;
+        int cellWidth = 120;
+        int cellHeight = 120;
+        String[] days = {"월", "화", "수", "목", "금"};
+
+        int dayIndex = (int) ((x - leftMargin) / cellWidth);
+        if (dayIndex < 0 || dayIndex >= days.length) return null;
+
+        int periodIndex = (int) ((y - topMargin) / cellHeight);
+        if (periodIndex < 0 || periodIndex >= 9) return null;
+
+        String clickedDay = days[dayIndex];
+        int clickedPeriod = periodIndex + 1;
+
+        for (TimetableItem item : currentSubjects) {
+            if (item.getDay().equals(clickedDay)) {
+                int start = item.getStartPeriod();
+                int end = start + item.getDuration() - 1;
+                if (clickedPeriod >= start && clickedPeriod <= end) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 
     private void generateTimetableImage() {
@@ -182,18 +231,21 @@ public class TimetableActivity extends AppCompatActivity {
         paint.setTextSize(40);
         paint.setColor(Color.BLACK);
 
+        // 요일 텍스트
         for (int i = 0; i < days.length; i++) {
             float x = leftMargin + cellWidth * i + 10;
             float y = topMargin - 20;
             canvas.drawText(days[i], x, y, paint);
         }
 
+        // 교시 텍스트
         for (int i = 1; i <= periods; i++) {
             float x = leftMargin - 60;
             float y = topMargin + cellHeight * (i - 1) + 80;
             canvas.drawText(i + "교시", x, y, paint);
         }
 
+        // 그리드 그리기
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.GRAY);
         for (int d = 0; d < days.length; d++) {
@@ -206,6 +258,7 @@ public class TimetableActivity extends AppCompatActivity {
             }
         }
 
+        // 과목 칸 그리기
         paint.setStyle(Paint.Style.FILL);
         for (TimetableItem item : currentSubjects) {
             int dayIndex = -1;
@@ -217,28 +270,37 @@ public class TimetableActivity extends AppCompatActivity {
             }
             if (dayIndex == -1) continue;
 
-            paint.setColor(Color.parseColor(item.getColor()));
-
             int left = leftMargin + dayIndex * cellWidth + 2;
             int top = topMargin + (item.getStartPeriod() - 1) * cellHeight + 2;
             int right = left + cellWidth - 4;
             int bottom = top + cellHeight * item.getDuration() - 4;
 
-            canvas.drawRect(left, top, right, bottom, paint);
+            if (selectedItem != null && selectedItem.getId() == item.getId()) {
+                // 선택된 과목 강조: 노란색 테두리
+                paint.setColor(Color.parseColor(item.getColor()));
+                canvas.drawRect(left, top, right, bottom, paint);
 
-            paint.setColor(Color.WHITE);
-            paint.setTextSize(30);
-            paint.setAntiAlias(true);
+                Paint borderPaint = new Paint();
+                borderPaint.setStyle(Paint.Style.STROKE);
+                borderPaint.setColor(Color.YELLOW);
+                borderPaint.setStrokeWidth(8);
+                canvas.drawRect(left, top, right, bottom, borderPaint);
 
-            float textX = left + 10;
-            float textY = top + 40;
+                paint.setColor(Color.WHITE);
+                paint.setTextSize(36);
+                paint.setAntiAlias(true);
+                canvas.drawText(item.getSubjectName(), left + 10, top + 60, paint);
 
-            String[] lines = item.getSubjectName().split("\\(");
-            String firstLine = lines[0];
-            String secondLine = (lines.length > 1) ? "(" + lines[1] : "";
+            } else {
+                // 일반 과목 칸
+                paint.setColor(Color.parseColor(item.getColor()));
+                canvas.drawRect(left, top, right, bottom, paint);
 
-            canvas.drawText(firstLine, textX, textY, paint);
-            canvas.drawText(secondLine, textX, textY + 35, paint);
+                paint.setColor(Color.WHITE);
+                paint.setTextSize(36);
+                paint.setAntiAlias(true);
+                canvas.drawText(item.getSubjectName(), left + 10, top + 60, paint);
+            }
         }
 
         imageTimetable.setImageBitmap(bitmap);
