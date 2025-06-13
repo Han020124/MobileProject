@@ -37,6 +37,7 @@
             android:textStyle="bold"
             android:textColor="#01579B"
             android:backgroundTint="@color/white"
+            android:id="@+id/home_button"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,6 +1,8 @@
 package com.example.mobileproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +17,19 @@ public class AttendanceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_attendance);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // 🔽 화살표 버튼 클릭 시 HomeActivity로 이동
+        Button homeButton = findViewById(R.id.home_button);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(AttendanceActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // 현재 액티비티 종료 (선택사항)
         });
     }
 }

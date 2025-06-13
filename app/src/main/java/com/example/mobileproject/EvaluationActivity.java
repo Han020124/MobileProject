@@ -1,9 +1,11 @@
 package com.example.mobileproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -23,6 +25,14 @@ public class EvaluationActivity extends AppCompatActivity {
                 R.array.class_array,
                 android.R.layout.simple_spinner_dropdown_item
         );
+
+        Button homeButton = findViewById(R.id.home_button);
+        homeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(EvaluationActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // 현재 액티비티 종료 (선택사항)
+        });
+
 
 
 
