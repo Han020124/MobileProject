@@ -92,7 +92,7 @@ public class InterviewActivity extends AppCompatActivity {
     private void applyConsultation() {
         String professor = (String) spinnerProfessor.getSelectedItem();
         String date = (String) spinnerDate.getSelectedItem();
-        String studentName = "홍길동"; // 실제 앱에서는 로그인 정보 등에서 가져오기
+        String studentName = "홍길동";
 
         if (professor == null || date == null || selectedTime == null) {
             Toast.makeText(this, "교수님, 날짜, 시간을 모두 선택해주세요.", Toast.LENGTH_SHORT).show();

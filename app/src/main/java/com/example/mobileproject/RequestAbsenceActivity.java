@@ -27,7 +27,7 @@ public class RequestAbsenceActivity extends AppCompatActivity {
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(RequestAbsenceActivity.this, HomeActivity.class);
             startActivity(intent);
-            finish(); // 현재 액티비티 종료 (선택사항)
+            finish();
         });
     }
 }

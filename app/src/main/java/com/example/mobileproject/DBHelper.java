@@ -32,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTableSQL);
     }
 
-    // DB 업그레이드 시 호출 (버전 변경시)
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
@@ -51,7 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    // 모든 과목 조회
+    // 과목 조회
     public Cursor getAllSubjects() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
@@ -82,7 +82,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + COL_NAME + "=?", new String[]{name});
     }
 
-    // ✅ 이수구분별 학점 합계 조회 (차트용)
+
     public HashMap<String, Integer> getCategoryCreditSum() {
         HashMap<String, Integer> result = new HashMap<>();
         SQLiteDatabase db = this.getReadableDatabase();

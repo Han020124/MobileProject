@@ -24,12 +24,11 @@ public class AttendanceActivity extends AppCompatActivity {
             return insets;
         });
 
-        // 🔽 화살표 버튼 클릭 시 HomeActivity로 이동
         Button homeButton = findViewById(R.id.home_button);
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(AttendanceActivity.this, HomeActivity.class);
             startActivity(intent);
-            finish(); // 현재 액티비티 종료 (선택사항)
+            finish();
         });
     }
 }

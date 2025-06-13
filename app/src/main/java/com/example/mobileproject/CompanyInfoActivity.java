@@ -27,7 +27,7 @@ public class CompanyInfoActivity extends AppCompatActivity {
         homeButton.setOnClickListener(v -> {
             Intent intent = new Intent(CompanyInfoActivity.this, PartnercompanyActivity.class);
             startActivity(intent);
-            finish(); // 현재 액티비티 종료 (선택사항)
+            finish();
         });
     }
 }

@@ -15,13 +15,13 @@ public class graduation_regi extends AppCompatActivity {
 
     Spinner spinnerSubject, spinnerCredit, spinnerClass;
     Button buttonConfirm;
-    ImageButton btnArrow; // 화살표 버튼 추가
+    ImageButton btnArrow;
     DBHelper dbHelper;    // SQLite DB 헬퍼 클래스
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graduation_regi); // XML 파일 이름에 맞게 수정
+        setContentView(R.layout.activity_graduation_regi);
 
         spinnerSubject = findViewById(R.id.spinner_sub);
         spinnerCredit = findViewById(R.id.spinner_crd);
